@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1 align="center">Notes</h1>
+<ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+    <li class="list-group-item bg-dark my-2" style="border-radius: 12px;" >
+       <!-- <p style="color: black"> border-radius: 12px; -->
+
+        {{ note.data }}
+    <!-- </p>  -->
+    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+        <span aria-hidden="true"style="color: white;">&times;</span>
+      </button>
+        <!-- <button type="button"  class="close" onclick="deleteNote( {{note.Id }})"><span aria-hidden="true" style="color: white;">&times;</span></button> -->
+    </li>
+    {% endfor %}
+</ul>
+<br />
+<form method="POST">
+    <textarea name="note" id="note" class="form-control bg-dark" style="color: white; border-radius: 12px;align-items: center;" placeholder="New Note"></textarea>
+    <br />
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+    </div>
+</form>
+{% endblock %}
+
+
